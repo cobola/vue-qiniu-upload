@@ -18,6 +18,8 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
     props: {
         method: {
@@ -64,12 +66,12 @@ export default {
                     let length = files.length
                     for (; i < length; i++) {
                         formData.set('file', files[i])
-                        this.$http.post(this.action, formData).then(res => {
+                        axios.post(this.action, formData).then(res => {
                             this.$emit('on-upload', res.body)
                         })
                     }
                 } else {
-                    this.$http.post(this.action, formData).then(res => {
+                    axios.post(this.action, formData).then(res => {
                         this.$emit('on-upload', res.body)
                     })
                 }
